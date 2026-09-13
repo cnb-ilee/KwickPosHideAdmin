@@ -89,11 +89,11 @@
             font-weight: bold !important;
             text-align: center !important;
             box-shadow: 0 2px 4px rgba(0,0,0,0.4) !important;
-            opacity: 0.85 !important;
+            opacity: 0.35 !important;
         `;
 
         btn.onmouseover = () => { btn.style.opacity = '1.0'; };
-        btn.onmouseout = () => { btn.style.opacity = '0.85'; };
+        btn.onmouseout = () => { btn.style.opacity = '0.35'; };
 
         btn.onclick = function(e) {
             e.preventDefault();
