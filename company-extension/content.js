@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         Resize & Toggle KwickPOS Frameset (Conditional Collapse)
-// @namespace    http://tampermonkey.net/
-// @version      2.2
-// @description  Starts collapsed only if mylog frame exists, uses compact arrow inside mywin
-// @match        *://kwickpos.com/*
-// @match        *://*.kwickpos.com/*
-// @run-at       document-start
-// ==/UserScript==
-
 (function() {
     'use strict';
 

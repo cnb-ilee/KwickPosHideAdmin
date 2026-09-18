@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "KwickPOS Hide Admin Sidebar",
+  "version": "2.2.0",
+  "description": "Collapses the KwickPOS admin sidebar and provides a compact toggle for authorized users.",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://kwickpos.com/*",
+        "*://*.kwickpos.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
