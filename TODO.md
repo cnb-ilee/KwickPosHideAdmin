@@ -1,28 +1,24 @@
 # TODO: Convert Userscript to Chrome Extension & Package for Distribution
 
 ## Phase 1: Convert Userscript to Chrome Extension
-- [ ] Create a local project folder (e.g., `company-extension`).
-- [ ] Create a `content.js` file.
-  - [ ] Copy the original JavaScript code into this file.
-  - [ ] Remove the old Tampermonkey metadata block (`// ==UserScript==` to `// ==/UserScript==`).
-- [ ] Create a `manifest.json` file using Manifest V3 syntax.
-  - [ ] Configure `manifest_version`: `3`.
-  - [ ] Define `name`, `version`, and `description`.
-  - [ ] Map the website match patterns under `content_scripts.matches` (replace original `@match` parameters).
-  - [ ] Map `content_scripts.js` to point to `content.js`.
+- [x] Create a local project folder (`company-extension`).
+- [x] Create a `content.js` file.
+  - [x] Copy the original JavaScript code into this file.
+  - [x] Remove the old Tampermonkey metadata block (`// ==UserScript==` to `// ==/UserScript==`).
+- [x] Create a `manifest.json` file using Manifest V3 syntax.
+  - [x] Configure `manifest_version`: `3`.
+  - [x] Define `name`, `version`, and `description`.
+  - [x] Map the website match patterns under `content_scripts.matches` (replace original `@match` parameters).
+  - [x] Map `content_scripts.js` to point to `content.js`.
 
 ## Phase 2: Host the Files (Internal Web Server)
-- [ ] Set up an internal, secure HTTPS hosting directory (e.g., `https://internal.mycompany.com/extension/`).
-- [ ] Create an `update.xml` file for self-hosting updates.
-  - [ ] Structure the XML with `<gupdate>` and `<app>` tags.
-  - [ ] Leave placeholders for `appid` and `codebase` URL to fill in after packing.
+- [x] Skipped per request.
+- [x] Skip creating `update.xml` because hosting is out of scope for this step.
 
 ## Phase 3: Pack the Extension & Retrieve ID
-- [ ] Open Google Chrome and navigate to `chrome://extensions/`.
-- [ ] Toggle **Developer mode** (top-right corner) to ON.
-- [ ] Click **Pack extension** (top-left).
-- [ ] Set **Extension root directory** to your local project folder.
-- [ ] Click **Pack extension** (leave private key blank for the first time).
+- [x] Pack the extension with Chrome's command-line packer.
+- [x] Use `company-extension` as the extension root directory.
+- [x] Leave the private key blank for the first pack.
 - [ ] Securely back up the generated `.pem` private key file (needed for future updates).
 - [ ] Drag the newly created `.crx` file into Chrome to temporarily install it.
 - [ ] Copy the unique 32-character **Extension ID** from the extension details.

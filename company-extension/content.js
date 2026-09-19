@@ -127,9 +127,5 @@
     }
 
     initialize();
-    const initInterval = setInterval(initialize, 250);
-    window.addEventListener('unload', () => {
-        clearInterval(initInterval);
-        winDocumentObserver?.disconnect();
-    });
+    setInterval(initialize, 250);
 })();
