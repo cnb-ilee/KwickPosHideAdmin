@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Resize & Toggle KwickPOS Frameset (Conditional Collapse)
+// @name         Resize & Toggle KwickPoS Admin Frameset
 // @namespace    http://tampermonkey.net/
-// @version      2.2
-// @description  Starts collapsed only if mylog frame exists, uses compact arrow inside mywin
+// @version      1.0
+// @description  Script to hide the admin side of the KwickPoS agent which takes too much space.
 // @match        *://kwickpos.com/*
 // @match        *://*.kwickpos.com/*
 // @run-at       document-start
@@ -137,9 +137,6 @@
     }
 
     initialize();
-    const initInterval = setInterval(initialize, 250);
-    window.addEventListener('unload', () => {
-        clearInterval(initInterval);
-        winDocumentObserver?.disconnect();
-    });
+    setInterval(initialize, 250);
 })();
+
