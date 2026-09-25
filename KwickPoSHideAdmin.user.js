@@ -1,15 +1,18 @@
 // ==UserScript==
 // @name         Resize & Toggle KwickPoS Admin Frameset
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Script to hide the admin side of the KwickPoS agent which takes too much space.
 // @match        *://kwickpos.com/*
 // @match        *://*.kwickpos.com/*
 // @run-at       document-start
+// @license      MIT 
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    if (window.top !== window.self) return;
 
     let isCollapsed = true;
     let observedWinFrame = null;
@@ -54,13 +57,15 @@
         const topDocument = getTopDocument();
 
         topDocument?.querySelectorAll('frameset').forEach((frameset) => {
-            frameset.cols = targetCols;
-            frameset.setAttribute('cols', targetCols);
+            if (frameset.getAttribute('cols') !== targetCols) {
+                frameset.setAttribute('cols', targetCols);
+            }
         });
 
         const button = getMyWinDocument()?.getElementById('kwick-compact-toggle');
-        if (button) {
-            button.innerText = isCollapsed ? '▶' : '◀';
+        const buttonLabel = isCollapsed ? '▶' : '◀';
+        if (button && button.innerText !== buttonLabel) {
+            button.innerText = buttonLabel;
         }
     }
 
@@ -115,8 +120,8 @@
         if (!winFrame || !winDocument) return;
 
         if (winFrame !== observedWinFrame) {
-            observedWinFrame?.removeEventListener('load', initialize);
-            winFrame.addEventListener('load', initialize);
+            observedWinFrame?.removeEventListener('load', handleWinFrameLoad);
+            winFrame.addEventListener('load', handleWinFrameLoad);
             observedWinFrame = winFrame;
         }
 
@@ -130,13 +135,26 @@
         }
     }
 
-    function initialize() {
+    function handleWinFrameLoad() {
         observeWinDocument();
-        setFramesetCols(isCollapsed);
         injectCompactButton();
     }
 
-    initialize();
-    setInterval(initialize, 250);
+    function initialize() {
+        if (!hasMyLogFrame() || !getMyWinFrame()) return false;
+
+        setFramesetCols(isCollapsed);
+        observeWinDocument();
+        injectCompactButton();
+        return true;
+    }
+
+    const topDocument = getTopDocument();
+    if (!initialize() && topDocument) {
+        const frameObserver = new MutationObserver(() => {
+            if (initialize()) frameObserver.disconnect();
+        });
+        frameObserver.observe(topDocument, { childList: true, subtree: true });
+    }
 })();
 
