@@ -30,10 +30,10 @@ A Tampermonkey userscript designed specifically for **KwickPOS** (`*.kwickpos.co
 Follow these step-by-step instructions to install and activate the script:
 
 ### Step 1: Greasy Fork Page for Resize & Toggle KwickPOS Admin Frameset to install the script
-   - [Install Tampermonkey from Chrome Web Store](https://greasyfork.org/en/scripts/597436-resize-toggle-kwickpos-admin-frameset)
+   - [Install Left Admin Section on KwickPOS Script](https://greasyfork.org/en/scripts/597436-resize-toggle-kwickpos-admin-frameset)
 
 ### Step 2: Greasy Fork Page for new Tab page for POS Access to install the script
-   - [Install Tampermonkey from Chrome Web Store](https://greasyfork.org/en/scripts/597843-kwickpos-pos-access-in-new-tab)
+   - [Install New Tab instead of Pop Up Script](https://greasyfork.org/en/scripts/597843-kwickpos-pos-access-in-new-tab)
 
 ### Step 3: Check if both script are enabled in **Tampermonkey** extension
 
