@@ -11,6 +11,7 @@ A Tampermonkey userscript designed specifically for **KwickPOS** (`*.kwickpos.co
 - **Automatic Collapse:** Automatically collapses the admin frame (`mylog`) to `1%` on page load, giving `99%` width to the main register window (`mywin`).
 - **One-Click Toggle Button:** Injects a compact green toggle button (`▶` / `◀`) in the top-left corner of the main window so authorized users can easily expand the admin menu (to `20%`) or collapse it again anytime.
 - **Conditional Activation:** Only triggers if the admin frame (`mylog`) is detected, preventing interference with pages that do not use the frameset structure.
+- **POS Access in new Tab** When you click POS Access it will now bring a new tab rather than a pop-up.  Tab name will be merchant name as well.
 
 ---
 
@@ -19,6 +20,8 @@ A Tampermonkey userscript designed specifically for **KwickPOS** (`*.kwickpos.co
 1. Google Chrome (or Microsoft Edge / Brave / any Chromium browser).
 2. The **Tampermonkey** extension installed.
    - [Install Tampermonkey from Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+3. Turn on Allow User Scripts for **Tampermonkey** extension
+   - Extensions -> Manage extensions -> Tampermonkey -> Details -> Allow User Scripts
 
 ---
 
@@ -26,34 +29,22 @@ A Tampermonkey userscript designed specifically for **KwickPOS** (`*.kwickpos.co
 
 Follow these step-by-step instructions to install and activate the script:
 
-### Step 1: Open the Tampermonkey Dashboard
+### Step 1: Greasy Fork Page for Resize & Toggle KwickPOS Admin Frameset to install the script
+   - [Install Tampermonkey from Chrome Web Store](https://greasyfork.org/en/scripts/597436-resize-toggle-kwickpos-admin-frameset)
 
-1. Click the **Tampermonkey extension icon** in your Chrome toolbar (click the puzzle piece extensions menu if it is hidden).
-2. Select **Dashboard** (or **Create a new script...**).
+### Step 2: Greasy Fork Page for new Tab page for POS Access to install the script
+   - [Install Tampermonkey from Chrome Web Store](https://greasyfork.org/en/scripts/597843-kwickpos-pos-access-in-new-tab)
 
-### Step 2: Create a New Userscript
+### Step 3: Check if both script are enabled in **Tampermonkey** extension
 
-1. In the Tampermonkey dashboard, click the **`+` (Add a new script)** tab.
-2. Select and delete any default template code present in the editor.
+### Step 4: Test on KwickPOS
 
-### Step 3: Paste the Script Code
-
-1. Copy the entire contents of [`TamperScript.jc`](./TamperScript.jc) from this repository.
-2. Paste the code into the Tampermonkey editor window.
-
-### Step 4: Save the Script
-
-1. Click **File** > **Save** in the Tampermonkey editor menu (or press `Ctrl + S`).
-2. Verify that the script appears in your **Installed Userscripts** list and is toggled **Enabled (ON)**.
-
-### Step 5: Test on KwickPOS
-
-1. Open or refresh your KwickPOS web interface (`https://*.kwickpos.com/*`).
+1. Open your KwickPOS web interface (`https://*.kwickpos.com/*`).
 2. The admin frame on the left will automatically collapse to a thin 1% strip.
 3. Look for the small green arrow button (`▶`) near the top-left corner:
    - Click **`▶`** to expand the admin sidebar.
    - Click **`◀`** to collapse it back.
-
+4. When you click POS Access, it should create a new tab with the merchant name instead of pop-up
 ---
 
 ## Matching Domains
